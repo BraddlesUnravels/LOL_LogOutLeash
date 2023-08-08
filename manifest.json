@@ -1,0 +1,10 @@
+{
+    "version": "0.1.1",
+    "manifest_version": 3,
+    "name": "...just for lols",
+    "description": "This Chrome extension was built by a bloke that was tired of logging back into steer countless times per day",
+    "action": {
+        "default_popup": "js/index.html",
+        "default_title": "...just for lols"
+    }
+}
