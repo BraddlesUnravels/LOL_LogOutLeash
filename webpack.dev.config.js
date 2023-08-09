@@ -1,21 +1,19 @@
 const path = require("path");
 const HTMLPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: {
         index: "./src/index.tsx",
     },
     mode: "development",
+    devtool: 'eval-source-map',
     module: {
         rules: [
             {
               test: /\.(js|ts|tsx)$/,
                use: [{
                   loader: "babel-loader",
-                //    options: {
-                //      compilerOptions: { noEmit: false },
-                //     }
                 }],
                exclude: /node_modules/,
             },
@@ -27,6 +25,10 @@ module.exports = {
                   "css-loader"
                ]
             },
+            {
+				test: /\.(png|jpg|jpeg|mp3|ogg|wav|ttf)$/,
+				loader: 'url-loader'
+			}
         ],
     },
     devServer: {
@@ -41,14 +43,15 @@ module.exports = {
                 { from: "manifest.json", to: "../manifest.json" },
             ],
         }),
-        ...getHtmlPlugins(["index"]),
+        ...getHtmlPlugins([ "index" ]),
     ],
     resolve: {
-        extensions: [".tsx", ".ts", ".js"],
+        extensions: [ ".tsx", ".ts", ".js" ],
     },
     output: {
-        path: path.join(__dirname, "dist/js"),
+        path: path.join( __dirname, "dist/js" ),
         filename: "[name].js",
+        publicPath: '/'
     },
 };
 
@@ -56,8 +59,7 @@ function getHtmlPlugins(chunks) {
     return chunks.map(
         (chunk) =>
             new HTMLPlugin({
-                title: "...just for lols",
-                //template: './src/index.html',
+                title: `...just for lols`,
                 filename: `${chunk}.html`,
                 chunks: [chunk],
             })

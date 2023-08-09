@@ -3,16 +3,7 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import { Helmet } from 'react-helmet-async';;
 import { Box, Container, Grid } from '@mui/material'
 import { useThemeMode } from './theme';
-
-const styling = {
-    height: '15em', 
-    width: '30em', 
-    color: '#e1e1e1',
-    borderRadius: '1em',
-    background: 'linear-gradient(to right bottom, #268CF2, #123C5E)'
-}
-
-
+import BaseLayout from './components/UI/baseLayout';
 
 function App() {
   
@@ -27,11 +18,10 @@ function App() {
                 <title>...just for lols</title>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
             </Helmet>
-            <Box className="App" sx={ styling }>
-                <Grid container sx={{ flexGrow: 1 }}>
-                    loling already
-                </Grid>
-            </Box>
+            <BaseLayout>
+                Still on the lols
+            
+            </BaseLayout>
         </ThemeProvider>
     );
 }

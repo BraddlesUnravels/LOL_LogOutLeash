@@ -1,6 +1,6 @@
 const path = require("path");
 const HTMLPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -32,25 +32,25 @@ module.exports = {
                 { from: "manifest.json", to: "../manifest.json" },
             ],
         }),
-        ...getHtmlPlugins(["index"]),
+        ...getHtmlPlugins([ "index" ]),
     ],
     resolve: {
-        extensions: [".tsx", ".ts", ".js"],
+        extensions: [ ".tsx", ".ts", ".js" ],
     },
     output: {
-        path: path.join(__dirname, "dist/js"),
+        path: path.join( __dirname, "dist/js" ),
         filename: "[name].js",
+        publicPath: '/'
     },
 };
 
-function getHtmlPlugins(chunks) {
+function getHtmlPlugins( chunks ) {
     return chunks.map(
-        (chunk) =>
+        ( chunk ) =>
             new HTMLPlugin({
-                title: "Stop Logouts Dead",
-                //template: './src/index.html',
-                filename: `${chunk}.html`,
-                chunks: [chunk],
+                title: `...just for lols`,
+                filename: `${ chunk }.html`,
+                chunks: [ chunk ],
             })
     );
 }
